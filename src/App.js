@@ -1,14 +1,14 @@
 import './App.css';
-import ClassComponent from './components/ClassComponent';
-import FuncComponent from './components/FuncComponent';
+import FormSingUp from './components/FormSingUp';
+
 
 
 function App() {
   return (
-    <div>
-      <ClassComponent />   
-      <FuncComponent />      
-    </div>
+    <>
+      <h1>Formulario Registro</h1>
+      <FormSingUp />
+    </>      
   );
 }
 
