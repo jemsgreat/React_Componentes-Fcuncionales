@@ -11,6 +11,31 @@ function FormSingUp ({ handleSubmit }) {
     const [email, setEmail] = useState("")
     const [prom, setProm] = useState(true)
     const [nov, setNov] = useState(false)
+    const [errors, setErrors] = useState({
+        name: {
+            error: false,
+            message: "deben ser al menos 3 caracteres"
+        },
+    })
+    
+
+    function validarNombre(nombre) {
+        if (nombre.length >= 3) {
+            return {
+                name: {
+                    error: false,
+                    message:"",
+                },
+            }
+        }else {
+            return {
+                name: {
+                    error: true,
+                    message: "deben ser al menos 3 caracteres",
+                },
+            }
+        }
+    }
 
 
 
@@ -41,6 +66,17 @@ function FormSingUp ({ handleSubmit }) {
                     setName(e.target.value)
                 }
                 value={name}
+                error={errors.name.error}
+                helperText={
+                    errors.name.error ? errors.name.message : ""
+                }
+                onBlur={(e) =>{
+                    setErrors(
+                        validarNombre(
+                            e.target.value
+                        )
+                    )
+                }}
             />
             <TextField 
                 id="lastName" 
@@ -52,7 +88,6 @@ function FormSingUp ({ handleSubmit }) {
                 onChange={(e) =>
                     setLastName(e.target.value)
                 }
-
             />
             <TextField 
                 id="email" 
